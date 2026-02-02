@@ -1,0 +1,154 @@
+{
+  "uz": {
+    "header": {
+      "home": "Bosh sahifa",
+      "courses": "Kurslar",
+      "teachers": "Ustozlar",
+      "gallery": "Galereya",
+      "register": "Ro‘yxatdan o‘tish"
+    },
+    "home": {
+      "title": "Korean Center",
+      "subtitle": "Til — inson qalbiga ochiladigan eng go‘zal eshikdir ✨",
+      "button": "Boshlash 🚀"
+    },
+    "courses": {
+      "title": "Bizning Koreys Tili Kursimiz",
+      "desc": "Sizning koreys tilini o‘rganish sayohatingiz shu yerdan boshlanadi.",
+      "enroll": "Kursga yozilish 🚀"
+    },
+    "teachers": {
+      "title": "Ustozlarimiz — eng mukammal",
+      "desc": "Tajribali o‘qituvchilarimiz shaxsiy yondashuv bilan har bir talabani yuqori darajaga olib chiqadi.",
+      "cta": "Kursga yozilish"
+    },
+    "gallery": {
+      "title": "Bizning Galereya",
+      "noImages": "Hozircha rasm yo‘q",
+      "upload": "Rasm qo‘shish",
+      "delete": "O‘chirish"
+    },
+    "register": {
+      "name": "Ism",
+      "surname": "Familiya",
+      "phone": "Telefon",
+      "age": "Yosh",
+      "comment": "Izoh",
+      "submit": "Ro‘yxatdan o‘tish"
+    }
+  },
+  "ru": {
+    "header": {
+      "home": "Главная",
+      "courses": "Курсы",
+      "teachers": "Преподаватели",
+      "gallery": "Галерея",
+      "register": "Регистрация"
+    },
+    "home": {
+      "title": "Korean Center",
+      "subtitle": "Язык — это самая красивая дверь в сердце человека ✨",
+      "button": "Начать 🚀"
+    },
+    "courses": {
+      "title": "Наш курс корейского языка",
+      "desc": "Ваше путешествие в изучении корейского языка начинается здесь.",
+      "enroll": "Записаться на курс 🚀"
+    },
+    "teachers": {
+      "title": "Наши преподаватели — лучшие",
+      "desc": "Опытные преподаватели с индивидуальным подходом помогут каждому студенту достичь высокого уровня.",
+      "cta": "Записаться на курс"
+    },
+    "gallery": {
+      "title": "Наша галерея",
+      "noImages": "Пока нет изображений",
+      "upload": "Добавить изображение",
+      "delete": "Удалить"
+    },
+    "register": {
+      "name": "Имя",
+      "surname": "Фамилия",
+      "phone": "Телефон",
+      "age": "Возраст",
+      "comment": "Комментарий",
+      "submit": "Зарегистрироваться"
+    }
+  },
+  "en": {
+    "header": {
+      "home": "Home",
+      "courses": "Courses",
+      "teachers": "Teachers",
+      "gallery": "Gallery",
+      "register": "Register"
+    },
+    "home": {
+      "title": "Korean Center",
+      "subtitle": "Language is the most beautiful door to the human heart ✨",
+      "button": "Start 🚀"
+    },
+    "courses": {
+      "title": "Our Korean Language Course",
+      "desc": "Your journey to learn Korean starts here.",
+      "enroll": "Enroll 🚀"
+    },
+    "teachers": {
+      "title": "Our Teachers — the Best",
+      "desc": "Experienced teachers with a personal approach take every student to a high level.",
+      "cta": "Enroll in Course"
+    },
+    "gallery": {
+      "title": "Our Gallery",
+      "noImages": "No images yet",
+      "upload": "Add Image",
+      "delete": "Delete"
+    },
+    "register": {
+      "name": "Name",
+      "surname": "Surname",
+      "phone": "Phone",
+      "age": "Age",
+      "comment": "Comment",
+      "submit": "Register"
+    }
+  },
+  "kr": {
+    "header": {
+      "home": "홈",
+      "courses": "코스",
+      "teachers": "선생님",
+      "gallery": "갤러리",
+      "register": "등록"
+    },
+    "home": {
+      "title": "코리안 센터",
+      "subtitle": "언어는 인간의 마음을 여는 가장 아름다운 문입니다 ✨",
+      "button": "시작 🚀"
+    },
+    "courses": {
+      "title": "우리 한국어 코스",
+      "desc": "한국어 학습 여정이 여기서 시작됩니다.",
+      "enroll": "등록 🚀"
+    },
+    "teachers": {
+      "title": "우리 선생님 — 최고",
+      "desc": "경험 많은 선생님이 개인 맞춤형으로 모든 학생을 높은 수준으로 이끕니다.",
+      "cta": "코스 등록"
+    },
+    "gallery": {
+      "title": "우리 갤러리",
+      "noImages": "아직 이미지 없음",
+      "upload": "이미지 추가",
+      "delete": "삭제"
+    },
+    "register": {
+      "name": "이름",
+      "surname": "성",
+      "phone": "전화",
+      "age": "나이",
+      "comment": "메모",
+      "submit": "등록"
+    }
+  }
+}
