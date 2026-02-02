@@ -156,7 +156,7 @@ export default function About({ darkMode, lang }) {
 
         @media (max-width: 768px) {
           h2 { font-size: 2.2rem; }
-          div { padding: 25px; font-size: 1rem; }
+          div { padding: 3px; font-size: 1rem; }
         }
       `}</style>
     </motion.section>

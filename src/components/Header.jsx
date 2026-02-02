@@ -42,129 +42,128 @@ export default function Header({ darkMode, setDarkMode, setAdminLogged, lang }) 
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-500 ${
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed inset-x-0 top-0 z-50 w-full overflow-x-hidden transition-all duration-500 ${
         darkMode
           ? scrolled
-            ? "bg-gradient-to-r from-[#0f0f0f]/95 via-slate-900/95 to-[#1a1a1a]/95 backdrop-blur-md py-2 shadow-lg border-b border-slate-700"
-            : "bg-gradient-to-r from-[#0a0a0a] via-[#1f1f1f] to-slate-800 py-4"
+            ? "bg-[#111]/95 backdrop-blur-md py-2 shadow-lg border-b border-slate-700"
+            : "bg-[#111] py-3"
           : scrolled
-          ? "bg-gradient-to-r from-[#ffffff]/95 via-slate-100/95 to-[#f9f9f9]/95 backdrop-blur-md py-2 shadow-md border-b border-slate-300"
-          : "bg-gradient-to-r from-[#fafafa] via-slate-50 to-[#f0f0f0] py-4"
+          ? "bg-white/95 backdrop-blur-md py-2 shadow-md border-b border-slate-300"
+          : "bg-white py-3"
       }`}
     >
-      <div className="relative max-w-6xl mx-auto px-6 flex items-center justify-between z-10">
+      {/* HEADER CONTENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <ScrollLink to="home" smooth duration={500} offset={-80} className="flex items-center gap-3 cursor-pointer">
-          <img src="/logo.png" alt="Korean Center" className="object-contain rounded-md w-14 h-14 drop-shadow" />
-          <div className="font-extrabold text-xl tracking-wide text-slate-700 dark:text-slate-200 header-font">
+        <ScrollLink to="home" smooth duration={500} offset={-80} className="flex items-center gap-3 cursor-pointer shrink-0">
+          <img src="/logo.png" alt="Korean Center" className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-md" />
+          <span className="font-bold text-base sm:text-lg dark:text-white text-gray-800 header-font whitespace-nowrap">
             KOREAN CENTER
-          </div>
+          </span>
         </ScrollLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 flex-nowrap">
+        <nav className="hidden md:flex items-center gap-5">
           {navItems.map((item, i) => (
             <ScrollLink
               key={i}
               to={sectionIds[i]}
               smooth
-              duration={700}
+              duration={600}
               offset={-80}
-              className="relative text-slate-800 dark:text-slate-200 font-medium text-lg cursor-pointer header-font group"
+              className="relative text-gray-800 dark:text-white font-medium cursor-pointer group"
             >
               {item}
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-slate-500 dark:bg-slate-300 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gray-700 dark:bg-gray-300 transition-all duration-300 group-hover:w-full"></span>
             </ScrollLink>
           ))}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="px-3 py-1 rounded border border-slate-400 dark:border-slate-600 text-slate-800 dark:text-slate-200 hover:bg-slate-200/40 dark:hover:bg-slate-700/40 transition"
+            className="px-3 py-1 rounded border border-gray-400 dark:border-gray-600 hover:bg-gray-200/40 dark:hover:bg-gray-700/40"
           >
             {darkMode ? translations[lang].light : translations[lang].dark}
           </button>
           <button
             onClick={() => setAdminModal(true)}
-            className="px-3 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600 transition"
+            className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
           >
             {translations[lang].admin}
           </button>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            aria-label="menu"
-            onClick={() => setOpen(!open)}
-            className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100"
-          >
-            {open ? "✕" : "☰"}
-          </button>
-        </div>
+        {/* Mobile Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden w-10 h-10 rounded flex items-center justify-center bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
+        >
+          {open ? "✕" : "☰"}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden flex flex-col items-center bg-slate-100 dark:bg-[#111] py-4 shadow-lg">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden w-full overflow-x-hidden bg-gray-100 dark:bg-[#111] py-3"
+        >
           {navItems.map((item, i) => (
             <ScrollLink
               key={i}
               to={sectionIds[i]}
               smooth
-              duration={700}
+              duration={600}
               offset={-80}
               onClick={() => setOpen(false)}
-              className="py-2 text-lg font-medium text-slate-800 dark:text-slate-200 cursor-pointer"
+              className="block py-3 text-center text-gray-800 dark:text-white font-medium"
             >
               {item}
             </ScrollLink>
           ))}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="mt-2 px-3 py-1 rounded border border-slate-400 dark:border-slate-600 text-slate-800 dark:text-slate-200 hover:bg-slate-200/40 dark:hover:bg-slate-700/40 transition"
-          >
-            {darkMode ? translations[lang].light : translations[lang].dark}
-          </button>
-        </div>
+          <div className="flex justify-center mt-2">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="px-3 py-1 rounded border border-gray-400 dark:border-gray-600"
+            >
+              {darkMode ? translations[lang].light : translations[lang].dark}
+            </button>
+          </div>
+        </motion.div>
       )}
 
-      {/* Admin Modal */}
+      {/* ADMIN MODAL */}
       {adminModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70" onClick={() => setAdminModal(false)}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4" onClick={() => setAdminModal(false)}>
           <div
-            className="bg-white dark:bg-slate-900 p-6 rounded-xl w-80 flex flex-col gap-4 shadow-lg"
+            className="bg-white dark:bg-[#222] p-5 rounded-xl w-full max-w-sm shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 header-font">{translations[lang].adminLogin}</h3>
+            <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">
+              {translations[lang].adminLogin}
+            </h3>
             <form onSubmit={handleAdminLogin} className="flex flex-col gap-3">
               <input
                 type="text"
                 placeholder={translations[lang].login}
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
-                className="px-3 py-2 rounded border outline-none bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100"
+                className="px-3 py-2 rounded border outline-none bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white"
               />
               <input
                 type="password"
                 placeholder={translations[lang].password}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="px-3 py-2 rounded border outline-none bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100"
+                className="px-3 py-2 rounded border outline-none bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white"
               />
               <div className="flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => setAdminModal(false)}
-                  className="px-3 py-1 rounded bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-slate-100 transition"
-                >
+                <button type="button" onClick={() => setAdminModal(false)} className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700">
                   {translations[lang].cancel}
                 </button>
-                <button
-                  type="submit"
-                  className="px-3 py-1 rounded bg-slate-800 dark:bg-slate-200 hover:bg-slate-700 dark:hover:bg-slate-300 text-white dark:text-black transition"
-                >
+                <button type="submit" className="px-3 py-1 rounded bg-gray-800 dark:bg-gray-200 text-white dark:text-black">
                   {translations[lang].submit}
                 </button>
               </div>

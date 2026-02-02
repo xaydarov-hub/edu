@@ -1,3 +1,4 @@
+// src/components/CourseSection.jsx
 import { motion } from "framer-motion";
 import { BookOpen, CheckCircle2, Clock, Award, Edit2, Trash2, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -93,29 +94,18 @@ export default function CourseSection({ darkMode = false, lang = "en", adminLogg
   const videoRef = useRef(null);
   const [adminModal, setAdminModal] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("courseVideos", JSON.stringify(videos));
-  }, [videos]);
+  useEffect(() => { localStorage.setItem("courseVideos", JSON.stringify(videos)); }, [videos]);
 
   useEffect(() => {
     if (videos.length <= 1) return;
-    const interval = setInterval(
-      () => setCurrentIndex((prev) => (prev + 1) % videos.length),
-      5000
-    );
+    const interval = setInterval(() => setCurrentIndex((prev) => (prev + 1) % videos.length), 5000);
     return () => clearInterval(interval);
   }, [videos]);
 
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
-    // HIMOYA: juda katta videodan oq ekran chiqmasligi uchun
-    if (file.size > 50 * 1024 * 1024) {
-      alert("Video 50MB dan katta bo‘lmasligi kerak!");
-      return;
-    }
-
+    if (file.size > 50 * 1024 * 1024) { alert("Video 50MB dan katta bo‘lmasligi kerak!"); return; }
     const reader = new FileReader();
     reader.onload = (ev) => setVideos((prev) => [...prev, ev.target.result]);
     reader.readAsDataURL(file);
@@ -130,40 +120,45 @@ export default function CourseSection({ darkMode = false, lang = "en", adminLogg
   return (
     <section
       id="courses"
-      className={`relative min-h-screen py-20 ${
+      className={`relative py-20 min-h-screen ${
         darkMode
           ? "bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white"
           : "bg-gradient-to-r from-indigo-100 via-purple-200 to-pink-200 text-gray-900"
       }`}
     >
-      <div className="relative container mx-auto px-6 lg:px-20 grid lg:grid-cols-2 gap-16 items-center z-10">
+      <div className="relative container mx-auto px-6 lg:px-20 flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
         {/* TEXT */}
-        <motion.div initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-          <h2 className="text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-indigo-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="flex-1"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-indigo-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
             {t.heading}
           </h2>
 
-          <p className="mt-6 text-lg max-w-xl">{t.description}</p>
+          <p className="mt-4 md:mt-6 text-base md:text-lg max-w-xl">{t.description}</p>
 
-          <div className="grid sm:grid-cols-2 gap-6 mt-8">
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-8">
             {t.features.map((f, i) => (
-              <div key={i} className="flex items-center gap-3 bg-white/10 p-4 rounded-xl">
+              <div key={i} className="flex items-center gap-3 bg-white/10 p-3 md:p-4 rounded-xl">
                 {featuresIcons[i]}
-                <span>{f}</span>
+                <span className="text-sm md:text-base">{f}</span>
               </div>
             ))}
           </div>
 
           <button
             onClick={() => navigate("/register")}
-            className="mt-8 px-10 py-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-bold"
+            className="mt-6 md:mt-8 px-8 md:px-10 py-3 md:py-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-bold text-sm md:text-lg"
           >
             {t.button}
           </button>
         </motion.div>
 
         {/* VIDEO */}
-        <div className="relative rounded-3xl overflow-hidden border">
+        <div className="relative flex-1 w-full rounded-3xl overflow-hidden border border-gray-300 dark:border-gray-700">
           <video
             ref={videoRef}
             src={videos[currentIndex]}
@@ -171,19 +166,18 @@ export default function CourseSection({ darkMode = false, lang = "en", adminLogg
             muted
             loop
             playsInline
-            className="w-full h-[420px] object-cover"
+            className="w-full h-64 sm:h-80 md:h-[420px] object-cover"
           />
-
-          <div className="absolute top-4 right-4 bg-black/50 px-4 py-2 rounded text-white">
+          <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-black/50 px-3 py-1 md:px-4 md:py-2 rounded text-xs md:text-sm text-white font-medium">
             {t.duration}
           </div>
 
           {adminLogged && (
             <button
               onClick={() => setAdminModal(true)}
-              className="absolute bottom-4 right-4 bg-blue-600 text-white px-3 py-2 rounded"
+              className="absolute bottom-3 right-3 md:bottom-4 md:right-4 bg-blue-600 text-white px-2 md:px-3 py-1 md:py-2 rounded flex items-center gap-1 text-xs md:text-sm"
             >
-              <Edit2 className="inline w-4 h-4 mr-1" />
+              <Edit2 className="w-4 h-4" />
               Edit
             </button>
           )}
@@ -192,13 +186,13 @@ export default function CourseSection({ darkMode = false, lang = "en", adminLogg
 
       {/* ADMIN MODAL */}
       {adminModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 max-w-xl w-full">
-            <h3 className="text-xl font-bold mb-4">{t.adminModalTitle}</h3>
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 md:p-6 max-w-xl w-full overflow-y-auto max-h-[90vh]">
+            <h3 className="text-lg md:text-xl font-bold mb-4">{t.adminModalTitle}</h3>
 
             <div className="flex flex-wrap gap-4">
               {videos.map((v, i) => (
-                <div key={i} className="relative w-32 h-20">
+                <div key={i} className="relative w-28 h-20 md:w-32 md:h-20">
                   <video src={v} className="w-full h-full object-cover rounded" />
                   <button
                     onClick={() => handleVideoDelete(i)}
@@ -209,8 +203,8 @@ export default function CourseSection({ darkMode = false, lang = "en", adminLogg
                 </div>
               ))}
 
-              <label className="w-32 h-20 border-dashed border-2 flex flex-col items-center justify-center cursor-pointer">
-                <Plus className="w-5 h-5" />
+              <label className="w-28 h-20 md:w-32 md:h-20 border-dashed border-2 border-gray-400 dark:border-gray-600 flex flex-col items-center justify-center cursor-pointer text-xs md:text-sm text-gray-700 dark:text-gray-200">
+                <Plus className="w-5 h-5 mb-1" />
                 {t.addVideo}
                 <input type="file" accept="video/*" hidden onChange={handleVideoChange} />
               </label>
@@ -218,7 +212,7 @@ export default function CourseSection({ darkMode = false, lang = "en", adminLogg
 
             <button
               onClick={() => setAdminModal(false)}
-              className="mt-6 px-4 py-2 bg-gray-300 rounded"
+              className="mt-4 md:mt-6 px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded text-sm md:text-base"
             >
               {t.close}
             </button>
