@@ -5,8 +5,8 @@ import { Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Bug, Youtube } f
 // Tarjima JSON
 const translations = {
   en: {
-    header: "Did you find a bug on the site?",
-    description: "If you notice any bug or issue, leave a message here. We'll fix it quickly ⚡",
+    header: "Contact Us",
+    description: "The Korean Center team is always ready to help you. If you have any questions about courses, class schedules, or registration, feel free to contact us.⚡",
     namePlaceholder: "Full Name",
     messagePlaceholder: "What issue did you notice?",
     submit: "Send",
@@ -17,8 +17,8 @@ const translations = {
     error: "❌ Something went wrong. Try again.",
   },
   uz: {
-    header: "Saytda xatolik ko‘rdingizmi?",
-    description: "Agar saytimizda qandaydir bug yoki muammo topsangiz, shu yerda yozib qoldiring. Biz uni tezda tuzatamiz ⚡",
+    header: "Aloqa uchun",
+    description: "Korean Center jamoasi sizga yordam berishga doimo tayyor Kurslar, dars jadvali yoki ro‘yxatdan o‘tish bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning.",
     namePlaceholder: "Ism va familiya",
     messagePlaceholder: "Qaysi xatoni ko‘rdingiz?",
     submit: "Yuborish",
@@ -29,8 +29,8 @@ const translations = {
     error: "❌ Xatolik yuz berdi. Qaytadan urinib ko‘ring.",
   },
   ru: {
-    header: "Вы заметили ошибку на сайте?",
-    description: "Если вы заметили баг или проблему на сайте, оставьте сообщение здесь. Мы исправим это быстро ⚡",
+    header: "Свяжитесь с нами",
+    description: "Команда Korean Center всегда готова помочь вам. Если у вас есть вопросы о курсах, расписании занятий или регистрации, свяжитесь с нами. ⚡",
     namePlaceholder: "Имя и фамилия",
     messagePlaceholder: "Какую ошибку вы заметили?",
     submit: "Отправить",
@@ -41,8 +41,8 @@ const translations = {
     error: "❌ Произошла ошибка. Попробуйте снова.",
   },
   kr: {
-    header: "사이트에서 오류를 발견하셨나요?",
-    description: "사이트에서 버그나 문제를 발견하면 여기에 메시지를 남기세요. 빠르게 수정하겠습니다 ⚡",
+    header: "문의하기",
+    description: "팀은 언제나 여러분을 도울 준비가 되어 있습니다. 강의, 수업 일정 또는 등록과 관련된 문의가 있으시면 언제든지 연락해 주세요. ⚡",
     namePlaceholder: "이름과 성",
     messagePlaceholder: "어떤 오류를 발견했나요?",
     submit: "보내기",

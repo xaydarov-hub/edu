@@ -17,8 +17,8 @@ export default function Register({ darkMode }) {
   const [successMsg, setSuccessMsg] = useState("");
 
   // --- Telegram ---
-  const TELEGRAM_TOKEN = "8470096894:AAGPR-J5wlZwuj9BlzKq-xKVZKh0j2EXZ1I";
-  const TELEGRAM_CHAT_ID = "7755428335";
+  const TELEGRAM_TOKEN = "7779012857:AAGlt94fom0ThPjw3yB08FlTtPI6L__pGYo";
+  const TELEGRAM_CHAT_ID = "289599299";
 
   // --- Translations ---
   const translations = {
