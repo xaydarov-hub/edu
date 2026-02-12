@@ -12,7 +12,7 @@ const translations = {
   kr: { nav: ["홈", "강좌", "교사", "갤러리", "회사 소개", "문의"], dark: "🌙", light: "☀️", admin: "관리자", adminLogin: "관리자 로그인", login: "로그인", password: "비밀번호", cancel: "취소", submit: "로그인" },
 };
 
-const sectionIds = ["home", "courses", "teachers", "gallery", "about" , "contact" ];
+const sectionIds = ["Home", "courses", "teachers", "gallery", "about" , "contact" ];
 
 export default function Header({ darkMode, setDarkMode, setAdminLogged, lang }) {
   const [scrolled, setScrolled] = useState(false);

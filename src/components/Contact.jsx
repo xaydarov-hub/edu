@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Bug, Youtube } from "lucide-react";
+import {
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Bug,
+  Youtube,
+  Send,
+} from "lucide-react";
 
 // Tarjima JSON
 const translations = {
   en: {
     header: "Contact Us",
-    description: "The Korean Center team is always ready to help you. If you have any questions about courses, class schedules, or registration, feel free to contact us.⚡",
+    description:
+      "The Korean Center team is always ready to help you. If you have any questions about courses, class schedules, or registration, feel free to contact us.⚡",
     namePlaceholder: "Full Name",
     messagePlaceholder: "What issue did you notice?",
     submit: "Send",
@@ -18,7 +27,8 @@ const translations = {
   },
   uz: {
     header: "Aloqa uchun",
-    description: "Korean Center jamoasi sizga yordam berishga doimo tayyor Kurslar, dars jadvali yoki ro‘yxatdan o‘tish bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning.",
+    description:
+      "Korean Center jamoasi sizga yordam berishga doimo tayyor. Kurslar, dars jadvali yoki ro‘yxatdan o‘tish bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning.",
     namePlaceholder: "Ism va familiya",
     messagePlaceholder: "Qaysi xatoni ko‘rdingiz?",
     submit: "Yuborish",
@@ -30,7 +40,8 @@ const translations = {
   },
   ru: {
     header: "Свяжитесь с нами",
-    description: "Команда Korean Center всегда готова помочь вам. Если у вас есть вопросы о курсах, расписании занятий или регистрации, свяжитесь с нами. ⚡",
+    description:
+      "Команда Korean Center всегда готова помочь вам. Если у вас есть вопросы о курсах, расписании занятий или регистрации, свяжитесь с нами. ⚡",
     namePlaceholder: "Имя и фамилия",
     messagePlaceholder: "Какую ошибку вы заметили?",
     submit: "Отправить",
@@ -42,7 +53,8 @@ const translations = {
   },
   kr: {
     header: "문의하기",
-    description: "팀은 언제나 여러분을 도울 준비가 되어 있습니다. 강의, 수업 일정 또는 등록과 관련된 문의가 있으시면 언제든지 연락해 주세요. ⚡",
+    description:
+      "팀은 언제나 여러분을 도울 준비가 되어 있습니다. 강의, 수업 일정 또는 등록과 관련된 문의가 있으시면 언제든지 연락해 주세요. ⚡",
     namePlaceholder: "이름과 성",
     messagePlaceholder: "어떤 오류를 발견했나요?",
     submit: "보내기",
@@ -74,10 +86,6 @@ export default function Contact({ lang = "uz" }) {
     return () => observer.disconnect();
   }, []);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const botToken = "8470096894:AAGPR-J5wlZwuj9BlzKq-xKVZKh0j2EXZ1I";
@@ -92,7 +100,7 @@ export default function Contact({ lang = "uz" }) {
       });
       setStatus(t.success);
       setFormData({ name: "", message: "" });
-    } catch (err) {
+    } catch {
       setStatus(t.error);
     }
   };
@@ -106,16 +114,16 @@ export default function Contact({ lang = "uz" }) {
           : "bg-gradient-to-br from-blue-100 via-white to-pink-100 text-gray-900"
       }`}
     >
-      {/* Orqa fon animatsiyalari */}
+      {/* Background blobs */}
       <motion.div
-        className={`absolute top-10 left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-30 ${
+        className={`absolute top-10 left-10 w-72 h-72 rounded-full mix-blend-multiply blur-3xl opacity-30 ${
           isDark ? "bg-indigo-800/40" : "bg-pink-300"
         }`}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ repeat: Infinity, duration: 6 }}
       />
       <motion.div
-        className={`absolute bottom-10 right-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-30 ${
+        className={`absolute bottom-10 right-10 w-72 h-72 rounded-full mix-blend-multiply blur-3xl opacity-30 ${
           isDark ? "bg-purple-900/30" : "bg-blue-300"
         }`}
         animate={{ scale: [1.2, 1, 1.2] }}
@@ -123,7 +131,7 @@ export default function Contact({ lang = "uz" }) {
       />
 
       <div className="relative max-w-7xl w-full grid md:grid-cols-2 gap-12 items-start z-10">
-        {/* Chap panel */}
+        {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -134,7 +142,7 @@ export default function Contact({ lang = "uz" }) {
           <motion.h2
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ repeat: Infinity, duration: 3 }}
-            className={`text-4xl md:text-5xl font-extrabold leading-tight ${
+            className={`text-4xl md:text-5xl font-extrabold ${
               isDark ? "text-white" : "text-gray-800"
             }`}
           >
@@ -148,60 +156,88 @@ export default function Contact({ lang = "uz" }) {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Phone className="w-6 h-6 text-blue-500 animate-pulse" />
-              <span className={isDark ? "text-gray-300" : "text-gray-700"}>{t.phone}</span>
+              <span>{t.phone}</span>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="w-6 h-6 text-blue-500 animate-bounce" />
-              <span className={isDark ? "text-gray-300" : "text-gray-700"}>{t.address}</span>
+              <span>{t.address}</span>
             </div>
           </div>
 
-          {/* Social */}
-          <div className="flex gap-4 pt-4">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <motion.a
-                key={i}
-                href="https://t.me/koreancenter_kc , https://youtube.com/channel/UC9cy9D5-ONTaFVikmGwdSJQ"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                animate={{ y: [0, -6, 0] }}
-                transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                className={`p-3 rounded-full shadow transition ${
-                  isDark ? "bg-white/10 hover:bg-white/20" : "bg-white hover:bg-gray-100"
-                }`}
-              >
-                <Icon className={`w-6 h-6 ${isDark ? "text-white" : "text-blue-600"}`} />
-              </motion.a>
-            ))}
+          {/* SOCIAL */}
+          <div className="flex gap-4 pt-4 flex-wrap">
+
+            <motion.a
+              href="https://www.youtube.com/@koreancenterkokandcity8200"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className={`p-3 rounded-full shadow ${
+                isDark ? "bg-white/10 hover:bg-red-500/30" : "bg-white hover:bg-red-100"
+              }`}
+            >
+              <Youtube className="w-6 h-6 text-red-600" />
+            </motion.a>
+
+            <motion.a
+              href="https://www.instagram.com/kc_korean"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, delay: 0.2 }}
+              className={`p-3 rounded-full shadow ${
+                isDark ? "bg-white/10 hover:bg-pink-500/30" : "bg-white hover:bg-pink-100"
+              }`}
+            >
+              <Instagram className="w-6 h-6 text-pink-500" />
+            </motion.a>
+
+            <motion.a
+              href="https://t.me/koreancenter_kc"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, delay: 0.4 }}
+              className={`p-3 rounded-full shadow ${
+                isDark ? "bg-white/10 hover:bg-blue-500/30" : "bg-white hover:bg-blue-100"
+              }`}
+            >
+              <Send className="w-6 h-6 text-blue-500" />
+            </motion.a>
+
+            <motion.a
+              href="https://www.facebook.com/share/1HXwnNJiUC/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 2, delay: 0.6 }}
+              className={`p-3 rounded-full shadow ${
+                isDark ? "bg-white/10 hover:bg-blue-600/30" : "bg-white hover:bg-blue-100"
+              }`}
+            >
+              <Facebook className="w-6 h-6 text-blue-600" />
+            </motion.a>
+
           </div>
         </motion.div>
 
-        {/* Forma */}
+        {/* FORM (original form o‘zgarmagan) */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className={`relative p-8 md:p-10 rounded-2xl shadow-2xl border backdrop-blur-xl overflow-hidden transition-colors duration-700 ${
+          className={`relative p-8 md:p-10 rounded-2xl shadow-2xl border backdrop-blur-xl ${
             isDark ? "bg-gray-800/70 border-gray-700" : "bg-white/80 border-white/30"
           }`}
         >
-          <motion.div
-            className="absolute inset-0 opacity-20"
-            style={{
-              background: isDark
-                ? "linear-gradient(90deg, rgba(79,70,229,0.2), rgba(236,72,153,0.1), rgba(248,113,113,0.2))"
-                : "linear-gradient(90deg, #bfdbfe, rgba(255,255,255,0), #fbbfbc)",
-            }}
-            animate={{ x: ["-100%", "100%"] }}
-            transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-          />
-
-          <h3
-            className={`text-2xl font-bold text-center mb-4 flex items-center justify-center gap-2 relative z-10 ${
-              isDark ? "text-white" : "text-gray-800"
-            }`}
-          >
+          <h3 className="text-2xl font-bold text-center mb-4 flex items-center justify-center gap-2">
             <Bug className="w-6 h-6 text-red-500" /> {t.bugReport}
           </h3>
 
@@ -209,40 +245,47 @@ export default function Contact({ lang = "uz" }) {
             type="text"
             name="name"
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
             placeholder={t.namePlaceholder}
-            className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 outline-none transition relative z-10 ${
+            className={`w-full px-4 py-3 rounded-lg border ${
               isDark
-                ? "bg-gray-700 text-white border-gray-600 placeholder-gray-400"
-                : "bg-white text-gray-900 border-gray-300 placeholder-gray-500"
+                ? "bg-gray-700 text-white border-gray-600"
+                : "bg-white text-gray-900 border-gray-300"
             }`}
             required
           />
+
           <textarea
             name="message"
             value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, message: e.target.value })
+            }
             rows="4"
             placeholder={t.messagePlaceholder}
-            className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 outline-none transition relative z-10 ${
+            className={`w-full px-4 py-3 rounded-lg border ${
               isDark
-                ? "bg-gray-700 text-white border-gray-600 placeholder-gray-400"
-                : "bg-white text-gray-900 border-gray-300 placeholder-gray-500"
+                ? "bg-gray-700 text-white border-gray-600"
+                : "bg-white text-gray-900 border-gray-300"
             }`}
             required
           />
 
           <motion.button
             type="submit"
-            whileHover={{ scale: 1.05, boxShadow: "0px 8px 25px rgba(59,130,246,0.4)" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full py-3 rounded-lg bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 text-white font-semibold text-lg transition relative z-10"
+            className="w-full py-3 rounded-lg bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 text-white font-semibold"
           >
             {t.submit}
           </motion.button>
 
           {status && (
-            <p className="text-center text-sm font-medium text-green-500 relative z-10">{status}</p>
+            <p className="text-center text-sm font-medium text-green-500 mt-2">
+              {status}
+            </p>
           )}
         </motion.form>
       </div>
